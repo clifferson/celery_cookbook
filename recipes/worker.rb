@@ -3,8 +3,8 @@ worker_install_location = node[:celery][:worker][:install_location]
 worker_repository       = node[:celery][:worker][:repository]
 worker_reference        = node[:celery][:worker][:reference]
 
-Chef::Application.fatal!("node[:celery][:worker][:install_location] needs to be set for celery::worker", 101)
-Chef::Application.fatal!("node[:celery][:worker][:repository] needs to be set for celery::worker", 102)
+Chef::Application.fatal!("node[:celery][:worker][:install_location] needs to be set for celery::worker", 101) if worker_install_location == nil
+Chef::Application.fatal!("node[:celery][:worker][:repository] needs to be set for celery::worker", 102) if worker_repository == nil
 
 
 directory worker_install_location do
